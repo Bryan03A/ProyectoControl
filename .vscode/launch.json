@@ -1,0 +1,105 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservicesCajeroApplication<microservices-cajero>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.microservices.cajero.MicroservicesCajeroApplication",
+            "projectName": "microservices-cajero",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=51021 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=microservices-cajero"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservicesConfigApplication<microservices-config>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.microservices.config.MicroservicesConfigApplication",
+            "projectName": "microservices-config",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservicesEurekaApplication<microservices-eureka>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.microservices.eureka.MicroservicesEurekaApplication",
+            "projectName": "microservices-eureka",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservicesClienteApplication<microservices-cliente>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.microservices.cliente.MicroservicesClienteApplication",
+            "projectName": "microservices-cliente",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservicesCompraApplication<microservices-compra>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.microservices.compra.MicroservicesCompraApplication",
+            "projectName": "microservices-compra",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservicesCompratotalApplication<microservices-compratotal>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.microservices.compratotal.MicroservicesCompratotalApplication",
+            "projectName": "microservices-compratotal",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservicesFormapagoApplication<microservices-formapago>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.microservices.formapago.MicroservicesFormapagoApplication",
+            "projectName": "microservices-formapago",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservicesProductoApplication<microservices-producto>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.microservices.producto.MicroservicesProductoApplication",
+            "projectName": "microservices-producto",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservicesVentasApplication<microservices-ventas>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.microservices.ventas.MicroservicesVentasApplication",
+            "projectName": "microservices-ventas",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservicesGatewayApplication<microservices-gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.microservices.gateway.MicroservicesGatewayApplication",
+            "projectName": "microservices-gateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: msvc-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: students
+          uri: 'http://localhost:8090'
+          predicates:
+            - Path=/api/student/**
+        - id: courses
+          uri: 'http://localhost:9090'
+          predicates:
+            - Path=/api/course/**
+        - id: cliente
+          uri: http://localhost:8090
+          predicates:
+            - Path=/clientes/**
+        - id: cajero
+          uri: http://localhost:8092
+          predicates:
+            - Path=/cajeros/**
+        - id: producto
+          uri: http://localhost:8093
+          predicates:
+            - Path=/productos/**
+        - id: compra
+          uri: http://localhost:8094
+          predicates:
+            - Path=/compras/**
+        - id: formapago
+          uri: http://localhost:8096
+          predicates:
+            - Path=/formas_pago/**
+        - id: compratotal
+          uri: http://localhost:8097
+          predicates:
+            - Path=/compras_total/**
+        - id: ventas
+          uri: http://localhost:8098
+          predicates:
+            - Path=/totalventas/**
