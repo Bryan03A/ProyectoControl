@@ -26,7 +26,6 @@
 		<module>microservices-producto</module>
 		<module>microservices-compratotal</module>
 		<module>microservices-formapago</module>
-		<module>microservices-ventas</module>
 		<module>microservices-interfaz</module>
 	</modules>
 
