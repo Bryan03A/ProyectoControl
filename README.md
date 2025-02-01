@@ -1,5 +1,5 @@
 
-# Microservices Architecture Project
+# Microservices Administración de compras Project
 
 Este proyecto es una arquitectura de microservicios desarrollada con **Spring Boot** y **PostgreSQL** para la gestión de clientes, productos, compras, formas de pago y más. Está diseñado para ser modular, escalable y fácil de mantener.
 
@@ -43,8 +43,7 @@ Este proyecto es una arquitectura de microservicios desarrollada con **Spring Bo
 
 3. **Clonar el Repositorio:**
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
-   cd tu-repositorio
+   git clone https://github.com/Bryan03A/ProyectoControl/ cd tu-repositorio
    ```
 
 4. **Importar el Proyecto en VS Code:**
@@ -124,6 +123,6 @@ Si deseas contribuir:
 
 ## 💡 Contacto
 
-Desarrollado por **[Tu Nombre o Equipo]**  
-Correo: [tu-email@example.com]  
-GitHub: [https://github.com/tu-usuario](https://github.com/tu-usuario)
+Desarrollado por Equipo 1 
+Correo: [baaguirre@uce.edu.ec]  
+GitHub: [https://github.com/BryanA03]
