@@ -19,9 +19,6 @@ Este proyecto es una arquitectura de microservicios desarrollada con **Spring Bo
 - **Java 22**
 - **Spring Boot 3.3.2**
 - **PostgreSQL (Supabase)**
-- **MongoDB Atlas (para algunos servicios)**
-- **Docker & Docker Compose**
-- **JWT para autenticación**
 
 ---
 
