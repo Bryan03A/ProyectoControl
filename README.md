@@ -1,4 +1,3 @@
-
 # Microservices Administración de compras Project
 
 Este proyecto es una arquitectura de microservicios desarrollada con **Spring Boot** y **PostgreSQL** para la gestión de clientes, productos, compras, formas de pago y más. Está diseñado para ser modular, escalable y fácil de mantener.
@@ -92,6 +91,8 @@ docker-compose up --build
 
 - **PostgreSQL**: Configurado en [Supabase](https://supabase.com/).
 - **MongoDB Atlas**: Para la gestión de ciertos datos.
+- puede acceder a la base de datos desde un administrador mediante:
+```psql -h aws-0-us-west-1.pooler.supabase.com -p 5432 -d postgres -U postgres.tseqkdyltupklalpgtki```
 
 Configura las credenciales de las bases de datos en los archivos `application.yml` de cada microservicio.
 
