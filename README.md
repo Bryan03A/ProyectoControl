@@ -1,5 +1,3 @@
-Aquí tienes un ejemplo de README.md para tu proyecto de microservicios en GitHub. Incluye la descripción del proyecto, la preparación del entorno en Visual Studio Code y la guía de instalación:
-
 # Microservices Architecture Project
 
 Este proyecto es una arquitectura de microservicios desarrollada con **Spring Boot** y **PostgreSQL** para la gestión de clientes, productos, compras, formas de pago y más. Está diseñado para ser modular, escalable y fácil de mantener.
