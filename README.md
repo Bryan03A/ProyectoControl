@@ -77,16 +77,6 @@ java -jar microservices-compratotal/target/microservices-compratotal.jar
 java -jar microservices-interfaz/target/microservices-interfaz.jar
 ```
 
-### 3️⃣ Ejecución con Docker
-
-Si deseas ejecutar los microservicios con Docker:
-
-```bash
-docker-compose up --build
-```
-
----
-
 ## 📊 Base de Datos
 
 - **PostgreSQL**: Configurado en [Supabase](https://supabase.com/).
