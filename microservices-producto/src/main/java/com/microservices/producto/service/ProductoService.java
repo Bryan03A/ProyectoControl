@@ -33,4 +33,9 @@ public class ProductoService {
     public void eliminarProducto(Long id) {
         productoRepository.deleteById(id);
     }
+
+    // Eliminación de múltiples productos de una vez
+    public void eliminarProductos(List<Long> ids) {
+        productoRepository.deleteAllById(ids);  // Elimina todos los cajeros con una sola llamada
+    }
 }

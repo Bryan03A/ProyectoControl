@@ -119,6 +119,11 @@ public class CompraService {
     public void eliminarCompra(Long id) {
         compraRepository.deleteById(id);
     }
+
+    // Eliminación de múltiples cajeros de una vez
+    public void eliminarCompras(List<Long> ids) {
+        compraRepository.deleteAllByIdIn(ids);  // Usamos el método actualizado en el repositorio
+    }
 }
 
 

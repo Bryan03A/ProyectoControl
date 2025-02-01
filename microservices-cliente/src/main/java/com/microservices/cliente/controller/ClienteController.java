@@ -41,4 +41,10 @@ public class ClienteController {
         clienteService.eliminarCliente(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PostMapping("/eliminar")
+    public ResponseEntity<Void> eliminarClientes(@RequestBody List<Long> ids) {
+        clienteService.eliminarClientes(ids);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

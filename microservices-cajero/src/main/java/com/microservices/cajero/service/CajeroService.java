@@ -34,7 +34,14 @@ public class CajeroService {
         return cajeroRepository.findByTurno(turno);
     }
 
+    // Eliminación de un solo cajero
     public void eliminarCajero(Long id) {
         cajeroRepository.deleteById(id);
     }
+
+    // Eliminación de múltiples cajeros de una vez
+    public void eliminarCajeros(List<Long> ids) {
+        cajeroRepository.deleteAllById(ids);  // Elimina todos los cajeros con una sola llamada
+    }
+
 }

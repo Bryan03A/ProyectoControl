@@ -41,5 +41,11 @@ public class FormaPagoController {
         formaPagoService.eliminarFormaPago(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PostMapping("/eliminar")
+    public ResponseEntity<Void> eliminarFormaPago(@RequestBody List<Long> ids) {
+        formaPagoService.eliminarFormaPago(ids);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
 

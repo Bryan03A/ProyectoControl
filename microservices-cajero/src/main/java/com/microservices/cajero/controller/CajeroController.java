@@ -53,4 +53,11 @@ public class CajeroController {
         cajeroService.eliminarCajero(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PostMapping("/eliminar")
+    public ResponseEntity<Void> eliminarCajeros(@RequestBody List<Long> ids) {
+        cajeroService.eliminarCajeros(ids);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 }

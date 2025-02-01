@@ -46,6 +46,12 @@ public class CompraController {
         compraService.eliminarCompra(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PostMapping("/eliminar")
+    public ResponseEntity<Void> eliminarCompras(@RequestBody List<Long> ids) {
+        compraService.eliminarCompras(ids);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
 
 

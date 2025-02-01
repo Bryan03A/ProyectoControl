@@ -29,4 +29,9 @@ public class ClienteService {
     public void eliminarCliente(Long id) {
         clienteRepository.deleteById(id);
     }
+
+    // Eliminación de múltiples clientes de una vez
+    public void eliminarClientes(List<Long> ids) {
+        clienteRepository.deleteAllById(ids);  // Elimina todos los clientes con una sola llamada
+    }
 }

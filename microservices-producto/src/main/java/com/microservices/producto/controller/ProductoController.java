@@ -47,4 +47,10 @@ public class ProductoController {
         productoService.eliminarProducto(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PostMapping("/eliminar")
+    public ResponseEntity<Void> eliminarProductos(@RequestBody List<Long> ids) {
+        productoService.eliminarProductos(ids);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

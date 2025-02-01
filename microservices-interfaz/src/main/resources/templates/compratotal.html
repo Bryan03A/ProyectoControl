@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Total</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        h2 {
+            color: #333;
+        }
+    
+        /* Contenedor principal */
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        /* Barra de búsqueda */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    
+        .search-bar h3 {
+            font-size: 16px;
+            margin-right: 10px;
+            line-height: 1;
+        }
+    
+        .search-bar input {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+    
+        .search-bar input:focus {
+            border-color: #007BFF;
+        }
+    
+        /* Sección de Cliente */
+        .form-group {
+            margin-bottom: 20px;
+        }
+    
+        .form-group select {
+            padding: 10px;
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+    
+        .form-group select:focus {
+            border-color: #007BFF;
+        }
+    
+        /* Estilo para la barra de forma de pago */
+        #formas-pago-lista {
+            margin-top: 20px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        #formas-pago-lista label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: block;
+            color: #333;
+        }
+    
+        #formaPago {
+            padding: 10px;
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+    
+        #formaPago:focus {
+            border-color: #007BFF;
+        }
+    
+        /* Tabla de Compras */
+        .table-container {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+    
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+    
+        th {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+    
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    
+        tr:hover {
+            background-color: #e9ecef;
+        }
+    
+        /* Botones */
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    
+        .btn-calcular {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    
+        .btn-calcular:hover {
+            background-color: #218838;
+        }
+    
+        /* Resultado */
+        #resultado {
+            margin-top: 20px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        #resultado p {
+            font-size: 18px;
+            margin: 10px 0;
+        
+        }
+        
+        nav {
+        background-color: #333;
+        overflow: hidden;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+        nav a.active {
+            background-color: #007BFF; /* Color destacado para la pestaña activa */
+        }
+
+                /* Estilo para el botón "Nueva Compra" */
+                .btn-compras {
+            background-color: #28a745; /* Verde */
+            color: white;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-compras:hover {
+            background-color: #218838; /* Oscuro cuando pasa el mouse */
+        }
+
+        /* Asegurarse de que el botón no se vea en la barra de navegación regular */
+        nav a:not(.btn-compras) {
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Compra Total</h1>
+
+    <nav>
+        <a href="/cajeros" class="{{ request.uri.contains('/cajeros') ? 'active' : '' }}">Cajeros</a>
+            <a href="/clientes" class="{{ request.uri.contains('/clientes') ? 'active' : '' }}">Clientes</a>
+            <a href="/compratotal" class="{{ request.uri.contains('/compratotal') ? 'active' : '' }}">Compra Total</a>
+            <a href="/formas_pago" class="{{ request.uri.contains('/formas_pago') ? 'active' : '' }}">Formas de Pago</a>
+            <a href="/productos" class="{{ request.uri.contains('/productos') ? 'active' : '' }}">Productos</a>
+            <a href="/interfaz/compras" class="btn-compras {{ request.uri.contains('/interfaz/compras') ? 'active' : '' }}">Nueva Compra</a>
+    </nav>
+
+    <div class="container">
+        <!-- Sección de selección de Cliente -->
+        <div class="form-group">
+            <label for="cliente">Seleccionar Cliente:</label>
+            <select id="cliente" onchange="cargarCompras()">
+                <option value="">Selecciona un Cliente</option>
+                <!-- Clientes se cargan dinámicamente -->
+            </select>
+        </div>
+
+        <!-- Tabla de Compras Realizadas -->
+        <div id="compras-lista">
+            <h3>Compras Realizadas</h3>
+            <div class="table-container">
+                <table id="tablaCompras">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Fila 1 -->
+                        <tr>
+                            <td id="producto1">-</td>
+                            <td id="descripcion1">-</td>
+                        </tr>
+                        <!-- Fila 2 -->
+                        <tr>
+                            <td id="producto2">-</td>
+                            <td id="descripcion2">-</td>
+                        </tr>
+                        <!-- Fila 3 -->
+                        <tr>
+                            <td id="producto3">-</td>
+                            <td id="descripcion3">-</td>
+                        </tr>
+                        <!-- Fila 4 -->
+                        <tr>
+                            <td id="producto4">-</td>
+                            <td id="descripcion4">-</td>
+                        </tr>
+                        <!-- Fila 5 -->
+                        <tr>
+                            <td id="producto5">-</td>
+                            <td id="descripcion5">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Sección de selección de Forma de Pago -->
+        <div id="formas-pago-lista" style="display: none;">
+            <label for="formaPago">Seleccionar Forma de Pago:</label>
+            <select id="formaPago">
+                <option value="">Selecciona una Forma de Pago</option>
+            </select>
+        </div>
+
+        <!-- Botón para Calcular el Total -->
+        <div class="btn-container">
+            <button id="calcularTotal" class="btn-calcular" onclick="calcularTotal()" style="display: none;">Calcular Total</button>
+        </div>
+
+        <!-- Resultados del Cálculo -->
+        <div id="resultado" style="display: none;">
+            <h3>Resultado:</h3>
+            <p>Total Compras: <span id="totalCompras"></span></p>
+            <p>Total Por Pago: <span id="totalPorPago"></span></p>
+            <p>Forma de Pago: <span id="formaPagoResultado"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Cargar Clientes
+        async function cargarClientes() {
+            const response = await fetch("http://localhost:8097/compratotal/clientes");
+            const clientes = await response.json();
+            const selectCliente = document.getElementById("cliente");
+
+            clientes.forEach(cliente => {
+                const option = document.createElement("option");
+                option.value = cliente.id;
+                option.textContent = cliente.nombre;
+                selectCliente.appendChild(option);
+            });
+
+            // Llamar a cargarCompras() al cargar la página para inicializar la tabla con las 5 filas vacías
+            cargarCompras();
+        }
+
+        // Cargar Compras por Cliente
+        async function cargarCompras() {
+            const clienteId = document.getElementById("cliente").value;
+            const comprasLista = document.getElementById("compras-lista");
+
+            // Limpiar filas previas
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById(`producto${i}`).textContent = "-";
+                document.getElementById(`descripcion${i}`).textContent = "-";
+            }
+
+            // Si no se ha seleccionado cliente, mantenemos la tabla vacía
+            if (!clienteId) return;
+
+            const response = await fetch(`http://localhost:8097/compratotal/compras/${clienteId}`);
+            const compras = await response.json();
+
+            // Llenar filas con las compras
+            compras.forEach((compra, index) => {
+                if (index < 5) {
+                    document.getElementById(`producto${index + 1}`).textContent = compra.producto.nombre;
+                    document.getElementById(`descripcion${index + 1}`).textContent = compra.producto.descripcion;
+                }
+            });
+
+            // Mostrar formas de pago si hay un cliente seleccionado
+            cargarFormasPago();
+        }
+
+        // Cargar Formas de Pago
+        async function cargarFormasPago() {
+            const response = await fetch("http://localhost:8097/compratotal/formas-pago");
+            const formasPago = await response.json();
+
+            const selectFormaPago = document.getElementById("formaPago");
+            selectFormaPago.innerHTML = '<option value="">Selecciona una Forma de Pago</option>';
+            formasPago.forEach(formaPago => {
+                const option = document.createElement("option");
+                option.value = formaPago.id;
+                option.textContent = formaPago.nombre;
+                selectFormaPago.appendChild(option);
+            });
+
+            document.getElementById("formas-pago-lista").style.display = "block";
+            document.getElementById("calcularTotal").style.display = "block";
+        }
+
+        // Calcular Total
+        async function calcularTotal() {
+            const clienteId = document.getElementById("cliente").value;
+            const formaPagoId = document.getElementById("formaPago").value;
+
+            const response = await fetch(`http://localhost:8097/compratotal/calcular?clienteId=${clienteId}&formaPagoId=${formaPagoId}`, {
+                method: 'POST'
+            });
+
+            const resultado = await response.json();
+            document.getElementById("totalCompras").textContent = resultado.totalCompras;
+            document.getElementById("totalPorPago").textContent = resultado.totalPorPago;
+            document.getElementById("formaPagoResultado").textContent = resultado.formaPagoNombre;
+
+            document.getElementById("resultado").style.display = "block";
+        }
+
+        // Inicializar la carga de clientes y la tabla
+        window.onload = cargarClientes;
+    </script>
+</body>
+</html>

@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class CompraTotalService {
-
     @Autowired
     private CompraRepository compraRepository;
 
@@ -24,35 +23,30 @@ public class CompraTotalService {
     private FormaPagoRepository formaPagoRepository;
 
     @Autowired
-    private ClienteRepository clienteRepository; // Asegúrate de tener este repositorio si usas Cliente
+    private ClienteRepository clienteRepository;
 
     public CompraTotal calcularTotalPorCliente(Long clienteId, Long formaPagoId) {
-        // Sumar el total de las compras para el cliente especificado
         Double totalCompras = compraRepository.sumTotalComprasByClienteId(clienteId);
         if (totalCompras == null) totalCompras = 0.0;
 
-        // Buscar la forma de pago especificada
         Optional<FormaPago> formaPagoOpt = formaPagoRepository.findById(formaPagoId);
         Double totalPorPago = 0.0;
         String formaPagoNombre = "";
 
         if (formaPagoOpt.isPresent()) {
             FormaPago formaPago = formaPagoOpt.get();
-            formaPagoNombre = formaPago.getNombre();  // Obtener nombre
+            formaPagoNombre = formaPago.getNombre();
             Integer cantidadPagos = formaPago.getCantidadPagos();
             if (cantidadPagos != null && cantidadPagos > 0) {
                 totalPorPago = totalCompras / cantidadPagos;
             }
         }
 
-        // Obtener información del cliente
         Optional<Cliente> clienteOpt = clienteRepository.findById(clienteId);
         String clienteNombre = clienteOpt.isPresent() ? clienteOpt.get().getNombre() : "Desconocido";
 
-        // Obtener las compras del cliente
         List<Compra> compras = compraRepository.findByClienteId(clienteId);
 
-        // Crear la lista de productos comprados
         List<CompraTotal.CompraProducto> comprasProductos = compras.stream().map(compra -> {
             CompraTotal.CompraProducto compraProducto = new CompraTotal.CompraProducto();
             compraProducto.setProductoNombre(compra.getProducto().getNombre());
@@ -60,7 +54,6 @@ public class CompraTotalService {
             return compraProducto;
         }).collect(Collectors.toList());
 
-        // Crear y devolver el objeto CompraTotal con los resultados
         CompraTotal compraTotal = new CompraTotal();
         compraTotal.setClienteId(clienteId);
         compraTotal.setClienteNombre(clienteNombre);
@@ -72,4 +65,13 @@ public class CompraTotalService {
 
         return compraTotal;
     }
+
+    public List<Cliente> obtenerTodosLosClientes() {
+        return clienteRepository.findAll();
+    }
+
+    public List<Compra> obtenerComprasPorCliente(Long clienteId) {
+        return compraRepository.findByClienteId(clienteId);
+    }
+    
 }

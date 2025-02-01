@@ -29,5 +29,10 @@ public class FormaPagoService {
     public void eliminarFormaPago(Long id) {
         formaPagoRepository.deleteById(id);
     }
+
+    // Eliminación de múltiples formas de pago de una vez
+    public void eliminarFormaPago(List<Long> ids) {
+        formaPagoRepository.deleteAllById(ids);  // Elimina todos los cajeros con una sola llamada
+    }
 }
 
